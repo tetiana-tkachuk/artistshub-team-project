@@ -1,10 +1,10 @@
 .hero {
-  background-color: #23132B;
   position: relative;
   overflow: hidden;
 }
 
 .hero-container {
+  background-color: #23132B;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -59,7 +59,7 @@
   fill: white;
 }
 
-.hero-wrapper {
+.hero-bg-image-wrapper {
   height: 385px;
   z-index: 1;
   position: relative;
@@ -121,7 +121,7 @@
     height: 47px;
   }
 
-  .hero-wrapper {
+  .hero-bg-image-wrapper {
   height: 632px;
   background-image: image-set(
   url('../img/hero-img/hero-tab-1x.webp') 1x,
@@ -131,10 +131,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-
-  .hero .container {
-  max-width: none;
-  }
 
   .hero::before {
     height: 80px;
@@ -166,7 +162,7 @@
     padding-top: 24px;
   }
 
-  .hero-wrapper {
+  .hero-bg-image-wrapper {
     width: 641px;
     height: 900px;
     background-image: image-set(
