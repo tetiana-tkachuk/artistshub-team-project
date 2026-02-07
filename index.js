@@ -1,26 +1,19 @@
-import{a as c,R as u,S as f}from"./assets/vendor-CWoPGbCt.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))i(t);new MutationObserver(t=>{for(const r of t)if(r.type==="childList")for(const a of r.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&i(a)}).observe(document,{childList:!0,subtree:!0});function o(t){const r={};return t.integrity&&(r.integrity=t.integrity),t.referrerPolicy&&(r.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?r.credentials="include":t.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(t){if(t.ep)return;t.ep=!0;const r=o(t);fetch(t.href,r)}})();const p=10,m="https://sound-wave.b.goit.study/api",h={GENRES:"/genres",ARTISTS:"/artists",ARTIST_BY_ID:"/artists/",FEEDBACKS:"/feedbacks"};c.defaults.baseURL=m;async function b(){const{data:e}=await c.get(`${h.FEEDBACKS}?limit=${p}&page=1`);return e}const v={feedbacksList:document.querySelector(".swiper-wrapper")};function d(e){const s=e.map(({_id:o,name:i,rating:t,descr:r})=>`
-        <div class="swiper-slide">
-          <div class="feedback-block">
-            <div data-raty class="feedback-rating" data-id=${o} data-score=${t}></div>
-            <p class="feedback-descr">${r}</p>
-            <p class="feedback-name">${i}</p>
-          </div>
-        </div>`).join("");v.feedbacksList.insertAdjacentHTML("beforeend",s)}async function y(){const s=(await b()).data;d(s)}y();d(feedbacksArray);const g={starOn:"./img/feedback-img/star-on.png",starOff:"./img/feedback-img/star-off.png",space:!1,readOnly:!0,halfShow:!1},w=Array.from(document.querySelectorAll("[data-raty]"));w.map(e=>{const s=Number(e.dataset.score);new u(e,{...g,score:s}).init()});new f(".swiper",{direction:"horizontal",loop:!1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination"},scrollbar:{el:".swiper-scrollbar"}});function $(e){const s=Math.floor(e/6e4),o=Math.floor(e%6e4/1e3);return`${s}:${o.toString().padStart(2,"0")}`}function S(e){return e.intDiedYear===null?`${e.intFormedYear} - present`:`${e.intFormedYear} - ${e.intDiedYear}`}function L(e){return e.strBiographyEN.split(".").slice(0,2).join(".")+"."}function k(e){return e.genres.map(s=>`
+import{a as l,R as y,S as w}from"./assets/vendor-CWoPGbCt.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))i(s);new MutationObserver(s=>{for(const o of s)if(o.type==="childList")for(const n of o.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function r(s){const o={};return s.integrity&&(o.integrity=s.integrity),s.referrerPolicy&&(o.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?o.credentials="include":s.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function i(s){if(s.ep)return;s.ep=!0;const o=r(s);fetch(s.href,o)}})();const $=10,L=8,A="https://sound-wave.b.goit.study/api",p={GENRES:"/genres",ARTISTS:"/artists",ARTIST_BY_ID:"/artists/",FEEDBACKS:"/feedbacks"};l.defaults.baseURL=A;async function S(){const{data:t}=await l.get(`${p.FEEDBACKS}?limit=${$}&page=1`);return t}async function M(t){const{data:e}=await l.get(`${p.ARTISTS}?limit=${L}&page=${t}`);return e}function E(t){const e=Math.floor(t/6e4),r=Math.floor(t%6e4/1e3);return`${e}:${r.toString().padStart(2,"0")}`}function _(t){return t.intDiedYear===null?`${t.intFormedYear} - present`:`${t.intFormedYear} - ${t.intDiedYear}`}function k(t){return t.strBiographyEN.split(".").slice(0,2).join(".")+"."}function B(t){return t.genres.map(e=>`
     <li>
-      <button class="artist-short-info-genre-btn">${s}</button>
-    </li>`).join("")}function E(e){return e.albumsList.map(o=>{const i=o.tracks.map(t=>{const r=t.movie===null?"":`
-        <a href="${t.movie}" target="_blank" rel="noopener noreferrer">
+      <button class="artist-short-info-genre-btn">${e}</button>
+    </li>`).join("")}function T(t){return t.albumsList.map(r=>{const i=r.tracks.map(s=>{const o=s.movie===null?"":`
+        <a href="${s.movie}" target="_blank" rel="noopener noreferrer">
           <svg width="24" height="24" fill="#ffffff">
             <use href="../img/sprite.svg#icon-youtube"></use>
           </svg>
         </a>`;return`
         <tr>
-          <td>${t.strTrack}</td>
-          <td>${$(t.intDuration)}</td>
-          <td>${r}</td>
+          <td>${s.strTrack}</td>
+          <td>${E(s.intDuration)}</td>
+          <td>${o}</td>
         </tr>`}).join("");return`
       <div class="artist-song-table">
-        <h3 class="artist-table-header">${o.strAlbum}</h3>
+        <h3 class="artist-table-header">${r.strAlbum}</h3>
         <table>
           <colgroup>
             <col style="width: 97px">
@@ -32,28 +25,28 @@ import{a as c,R as u,S as f}from"./assets/vendor-CWoPGbCt.js";(function(){const 
           </thead>
           <tbody>${i}</tbody>
         </table>
-      </div>`}).join("")}function A(e,s){const o=S(e),i=L(e),t=k(e),r=E(e);s.insertAdjacentHTML("beforeend",`
+      </div>`}).join("")}function h(t,e){const r=_(t),i=k(t),s=B(t),o=T(t);e.insertAdjacentHTML("beforeend",`
     <div class="artist-info-wrapper">
-      <h1 class="artist-name-title">${e.strArtist}</h1>
+      <h1 class="artist-name-title">${t.strArtist}</h1>
       <div class="artist-info">
-        <img class="artist-img" src="${e.strArtistThumb}" alt="${e.strArtist} artist photo">
+        <img class="artist-img" src="${t.strArtistThumb}" alt="${t.strArtist} artist photo">
         <div class="artist-short-info">
           <div class="artist-short-info-grid-wrapper">
             <div class="artist-short-info-years">
               <h3 class="short-info-small-header">Years active</h3>
-              <p class="short-info-small-text">${o}</p>
+              <p class="short-info-small-text">${r}</p>
             </div>
             <div class="artist-short-info-sex">
               <h3 class="short-info-small-header">Sex</h3>
-              <p class="short-info-small-text">${e.strGender}</p>
+              <p class="short-info-small-text">${t.strGender}</p>
             </div>
             <div class="artist-short-info-members">
               <h3 class="short-info-small-header">Members</h3>
-              <p class="short-info-small-text">${e.intMembers}</p>
+              <p class="short-info-small-text">${t.intMembers}</p>
             </div>
             <div class="artist-short-info-country">
               <h3 class="short-info-small-header">Country</h3>
-              <p class="short-info-small-text">${e.strCountry}</p>
+              <p class="short-info-small-text">${t.strCountry}</p>
             </div>
           </div>
           <div class="artist-bio">
@@ -64,13 +57,13 @@ import{a as c,R as u,S as f}from"./assets/vendor-CWoPGbCt.js";(function(){const 
             <button class="more-bio-btn">+</button>
           </div>
           <div class="artist-short-info-genres">
-            <ul class="artist-short-info-genres-list">${t}</ul>
+            <ul class="artist-short-info-genres-list">${s}</ul>
           </div>
         </div>
       </div>
       <div class="artist-albums-wrapper">
         <h2 class="artist-albums-header">Albums</h2>
-        ${r}
+        ${o}
       </div>
       <div class="modal-bio">
         <button class="artists-modal-bio-close-btn">
@@ -78,7 +71,45 @@ import{a as c,R as u,S as f}from"./assets/vendor-CWoPGbCt.js";(function(){const 
             <use href="../img/sprite.svg#icon-close"></use>
           </svg>
         </button>
-        <p class="modal-bio-text">${e.strBiographyEN}</p>
+        <p class="modal-bio-text">${t.strBiographyEN}</p>
       </div>
-    </div>`)}const B="65ada227af9f6d155db46908",M=document.querySelector(".tmp-open-btn"),n=document.querySelector(".modal-overlay"),O=document.querySelector(".artists-modal-close-btn"),x=document.querySelector(".modal");async function q(){n.classList.add("is-open"),document.body.style.overflow="hidden";const e=document.querySelector(".artist-info-wrapper");e&&e.remove();try{const{data:s}=await c.get(`https://sound-wave.b.goit.study/api/artists/${B}/albums`);A(s,x),T()}catch(s){console.error("Request failed:",s)}}function l(){var e;n.classList.remove("is-open"),document.body.style.overflow="",(e=document.querySelector(".artist-info-wrapper"))==null||e.remove()}function T(){const e=document.querySelector(".more-bio-btn"),s=document.querySelector(".modal-bio"),o=document.querySelector(".artists-modal-bio-close-btn");e.addEventListener("click",()=>s.classList.add("is-open")),o.addEventListener("click",()=>s.classList.remove("is-open"))}M.addEventListener("click",q);O.addEventListener("click",l);n.addEventListener("click",e=>{e.target===n&&l()});document.addEventListener("keydown",e=>{e.key==="Escape"&&l()});handleOpenModal();
+    </div>`)}const a={list:document.querySelector(".js-artists-list"),loadMoreBtn:document.querySelector(".js-artists-load"),modalOverlay:document.querySelector(".modal-overlay"),modalRoot:document.querySelector(".modal")};let d=1,u=!1;a.list&&a.loadMoreBtn&&j();function j(){a.list.innerHTML="",a.loadMoreBtn.hidden=!1,a.loadMoreBtn.addEventListener("click",q),a.list.addEventListener("click",x),b(!0)}async function q(){u||(d+=1,await b(!1))}async function b(t){u=!0,a.loadMoreBtn.textContent="Loading...",t&&(d=1);const r=(await M(d)).artists;t&&(a.list.innerHTML=""),a.list.insertAdjacentHTML("beforeend",r.map(O).join("")),r.length<8&&(a.loadMoreBtn.hidden=!0),a.loadMoreBtn.innerHTML=`
+    Load More
+    <svg class="artists__load-icon" width="20" height="20" aria-hidden="true">
+      <use href="../img/sprite.svg#icon-down-arrow-alt"></use>
+    </svg>
+  `,u=!1}function O(t){var m;const e=t._id,r=t.strArtist,i=t.strBiographyEN||"",s=i.length>120?`${i.slice(0,120)}...`:i,o=((m=t.genres)==null?void 0:m.slice(0,4))||[];return`
+    <li class="artist-card">
+      <div class="artist-card__image">
+        <img src="${t.strArtistThumb||""}" alt="${r}" loading="lazy" />
+      </div>
+
+      <div class="artist-card__content">
+        <ul class="artist-card__tags">
+          ${o.map(v=>`<li class="artist-card__tag">${v}</li>`).join("")}
+        </ul>
+
+        <h3 class="artist-card__name">${r}</h3>
+        <p class="artist-card__desc">${s}</p>
+
+        <button
+          class="artist-card__more js-artist-more"
+          type="button"
+          data-artist-id="${e}"
+        >
+          Learn More
+          <svg class="artist-card__icon" width="16" height="16" aria-hidden="true">
+            <use href="../img/sprite.svg#icon-caret-right"></use>
+          </svg>
+        </button>
+      </div>
+    </li>
+  `}async function x(t){const e=t.target.closest(".js-artist-more");if(!e)return;const r=e.dataset.artistId;r&&R(r)}async function R(t){var i;a.modalOverlay.classList.add("is-open"),document.body.style.overflow="hidden",(i=document.querySelector(".artist-info-wrapper"))==null||i.remove();const r=await(await fetch(`https://sound-wave.b.goit.study/api/artists/${t}/albums`,{headers:{Accept:"application/json"}})).json();h(r,a.modalRoot)}const I="65ada227af9f6d155db46908",C=document.querySelector(".tmp-open-btn"),c=document.querySelector(".modal-overlay"),P=document.querySelector(".artists-modal-close-btn"),N=document.querySelector(".modal");async function D(){c.classList.add("is-open"),document.body.style.overflow="hidden";const t=document.querySelector(".artist-info-wrapper");t&&t.remove();try{const{data:e}=await l.get(`https://sound-wave.b.goit.study/api/artists/${I}/albums`);h(e,N),F()}catch(e){console.error("Request failed:",e)}}function f(){var t;c.classList.remove("is-open"),document.body.style.overflow="",(t=document.querySelector(".artist-info-wrapper"))==null||t.remove()}function F(){const t=document.querySelector(".more-bio-btn"),e=document.querySelector(".modal-bio"),r=document.querySelector(".artists-modal-bio-close-btn");t.addEventListener("click",()=>e.classList.add("is-open")),r.addEventListener("click",()=>e.classList.remove("is-open"))}C.addEventListener("click",D);P.addEventListener("click",f);c.addEventListener("click",t=>{t.target===c&&f()});document.addEventListener("keydown",t=>{t.key==="Escape"&&f()});const Y={feedbacksList:document.querySelector(".swiper-wrapper")};function g(t){const e=t.map(({_id:r,name:i,rating:s,descr:o})=>`
+        <div class="swiper-slide">
+          <div class="feedback-block">
+            <div data-raty class="feedback-rating" data-id=${r} data-score=${s}></div>
+            <p class="feedback-descr">${o}</p>
+            <p class="feedback-name">${i}</p>
+          </div>
+        </div>`).join("");Y.feedbacksList.insertAdjacentHTML("beforeend",e)}async function H(){const e=(await S()).data;g(e)}H();g(feedbacksArray);const G={starOn:"./img/feedback-img/star-on.png",starOff:"./img/feedback-img/star-off.png",space:!1,readOnly:!0,halfShow:!1},K=Array.from(document.querySelectorAll("[data-raty]"));K.map(t=>{const e=Number(t.dataset.score);new y(t,{...G,score:e}).init()});new w(".swiper",{direction:"horizontal",loop:!1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination"},scrollbar:{el:".swiper-scrollbar"}});
 //# sourceMappingURL=index.js.map
