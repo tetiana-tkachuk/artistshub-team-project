@@ -14,4 +14,4 @@ function rs(e,t){return function(){return e.apply(t,arguments)}}const{toString:z
         rotateZ(${l.rotate?d?-L:L:0}deg)
         scale(${R})
       `;if(l.slideShadows){let A=c.querySelector(".swiper-slide-shadow");A||(A=Le("cards",c)),A&&(A.style.opacity=Math.min(Math.max((Math.abs(m)-.5)/.5,0),1))}c.style.zIndex=-Math.abs(Math.round(o))+a.length;const M=Ge(l,c);M.style.transform=T}},setTransition:a=>{const r=e.slides.map(d=>Te(d));r.forEach(d=>{d.style.transitionDuration=`${a}ms`,d.querySelectorAll(".swiper-slide-shadow").forEach(l=>{l.style.transitionDuration=`${a}ms`})}),rt({swiper:e,duration:a,transformElements:r})},perspective:()=>!0,overwriteParams:()=>({_loopSwapReset:!1,watchSlidesProgress:!0,loopAdditionalSlides:e.params.cardsEffect.rotate?3:2,centeredSlides:!0,virtualTranslate:!e.params.cssMode})})}const er=[Pa,Oa,La,Aa,Ia,Ra,Da,_a,za,ka,$a,Ba,wa,Na,Fa,Ha,Ya,Wa,Ua,Ka,Ja,Za,Qa];ae.use(er);export{tr as R,ae as S,Y as a};
-//# sourceMappingURL=vendor-CWoPGbCt.js.map
+//# sourceMappingURL=vendor-Byf7b3WI.js.map
