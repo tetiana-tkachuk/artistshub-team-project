@@ -12,6 +12,7 @@ export async function handleOpenModal(artistId) {
   document.body.style.overflow = 'hidden';
   document.querySelector('.artist-info-wrapper')?.remove();
 
+  
 
   try {
     const res = await fetch(
@@ -25,24 +26,35 @@ export async function handleOpenModal(artistId) {
   } 
 }
 
-function handleModalClose() {
+
+
+
+export function handleModalOverlayClick(e) {
+  if (e.target === modalOverlay) {
+    handleModalClose();
+  }
+}
+
+export function handleEscKeyClick(e) {
+  if (e.key === 'Escape') {
+    handleModalClose();
+  }
+}
+
+modalWindowCloseBtn.addEventListener('click', handleModalClose);
+modalOverlay.addEventListener('click', handleModalOverlayClick);
+document.addEventListener('keydown', handleEscKeyClick);
+
+
+export function handleModalClose() {
   modalOverlay.classList.remove('is-open');
   document.body.style.overflow = '';
   document.querySelector('.artist-info-wrapper')?.remove();
 
   modalWindowCloseBtn.removeEventListener('click', handleModalClose);
-  modalOverlay.removeEventListener('click', handleModalClose);
-  document.removeEventListener('keydown', handleModalClose);
+  modalOverlay.removeEventListener('click', handleModalOverlayClick);
+  document.removeEventListener('keydown', handleEscKeyClick);
 }
 
-modalWindowCloseBtn.addEventListener('click', handleModalClose);
-modalOverlay.addEventListener('click', (e) => {
-  if (e.target === modalOverlay) {
-    handleModalClose();
-  }
-});
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    handleModalClose();
-  }
-});
+
+

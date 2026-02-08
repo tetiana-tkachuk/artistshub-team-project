@@ -1,11 +1,14 @@
 import { getArtists } from './api.js';
 import { renderArtistInfo } from './artist-modal-render.js';
+import {handleModalClose, handleEscKeyClick, handleModalOverlayClick} from './artist-modal.js'
 
 const refs = {
   list: document.querySelector('.js-artists-list'),
   loadMoreBtn: document.querySelector('.js-artists-load'),
   modalOverlay: document.querySelector('.modal-overlay'),
   modalRoot: document.querySelector('.modal'),
+  modalOverlay: document.querySelector('.modal-overlay'),
+  modalWindowCloseBtn: document.querySelector('.artists-modal-close-btn'),
 };
 
 let page = 1;
@@ -114,6 +117,9 @@ async function openArtistModal(artistId) {
   document.body.style.overflow = 'hidden';
 
   document.querySelector('.artist-info-wrapper')?.remove();
+  refs.modalWindowCloseBtn.addEventListener('click', handleModalClose);
+  refs.modalOverlay.addEventListener('click', handleModalOverlayClick);
+  document.addEventListener('keydown', handleEscKeyClick);
 
   const res = await fetch(
     `https://sound-wave.b.goit.study/api/artists/${artistId}/albums`,
@@ -123,5 +129,9 @@ async function openArtistModal(artistId) {
   const data = await res.json();
   renderArtistInfo(data, refs.modalRoot);
 }
+
+
+
+
 
 
