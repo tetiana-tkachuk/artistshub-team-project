@@ -1,16 +1,16 @@
-import{a as l,R as g,S as y}from"./assets/vendor-Byf7b3WI.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const r of document.querySelectorAll('link[rel="modulepreload"]'))i(r);new MutationObserver(r=>{for(const o of r)if(o.type==="childList")for(const n of o.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function s(r){const o={};return r.integrity&&(o.integrity=r.integrity),r.referrerPolicy&&(o.referrerPolicy=r.referrerPolicy),r.crossOrigin==="use-credentials"?o.credentials="include":r.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function i(r){if(r.ep)return;r.ep=!0;const o=s(r);fetch(r.href,o)}})();const L=10,w=8,S="https://sound-wave.b.goit.study/api",p={GENRES:"/genres",ARTISTS:"/artists",ARTIST_BY_ID:"/artists/",FEEDBACKS:"/feedbacks"};l.defaults.baseURL=S;async function $(){const{data:t}=await l.get(`${p.FEEDBACKS}?limit=${L}&page=1`);return t}async function A(t){const{data:e}=await l.get(`${p.ARTISTS}?limit=${w}&page=${t}`);return e}function k(t){const e=Math.floor(t/6e4),s=Math.floor(t%6e4/1e3);return`${e}:${s.toString().padStart(2,"0")}`}function E(t){return t.intDiedYear===null?`${t.intFormedYear} - present`:`${t.intFormedYear} - ${t.intDiedYear}`}function M(t){return t.strBiographyEN.split(".").slice(0,2).join(".")+"."}function _(t){return t.genres.map(e=>`
+import{a as f,R as y,S as b}from"./assets/vendor-Byf7b3WI.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))o(e);new MutationObserver(e=>{for(const i of e)if(i.type==="childList")for(const c of i.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&o(c)}).observe(document,{childList:!0,subtree:!0});function s(e){const i={};return e.integrity&&(i.integrity=e.integrity),e.referrerPolicy&&(i.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?i.credentials="include":e.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function o(e){if(e.ep)return;e.ep=!0;const i=s(e);fetch(e.href,i)}})();const L=10,w=8,$="https://sound-wave.b.goit.study/api",p={GENRES:"/genres",ARTISTS:"/artists",ARTIST_BY_ID:"/artists/",FEEDBACKS:"/feedbacks"};f.defaults.baseURL=$;async function S(){const{data:t}=await f.get(`${p.FEEDBACKS}?limit=${L}&page=1`);return t}async function A(t){const{data:r}=await f.get(`${p.ARTISTS}?limit=${w}&page=${t}`);return r}function k(t){const r=Math.floor(t/6e4),s=Math.floor(t%6e4/1e3);return`${r}:${s.toString().padStart(2,"0")}`}function E(t){return t.intDiedYear===null?`${t.intFormedYear} - present`:`${t.intFormedYear} - ${t.intDiedYear}`}function M(t){return t.strBiographyEN.split(".").slice(0,2).join(".")+"."}function _(t){return t.genres.map(r=>`
     <li>
-      <button class="artist-short-info-genre-btn">${e}</button>
-    </li>`).join("")}function B(t){return t.albumsList.map(s=>{const i=s.tracks.map(r=>{const o=r.movie===null?"":`
-        <a href="${r.movie}" target="_blank" rel="noopener noreferrer">
+      <button class="artist-short-info-genre-btn">${r}</button>
+    </li>`).join("")}function T(t){return t.albumsList.map(s=>{const o=s.tracks.map(e=>{const i=e.movie===null?"":`
+        <a href="${e.movie}" target="_blank" rel="noopener noreferrer">
           <svg width="24" height="24" fill="#ffffff">
             <use href="../img/sprite.svg#icon-youtube"></use>
           </svg>
         </a>`;return`
         <tr>
-          <td>${r.strTrack}</td>
-          <td>${k(r.intDuration)}</td>
-          <td>${o}</td>
+          <td>${e.strTrack}</td>
+          <td>${k(e.intDuration)}</td>
+          <td>${i}</td>
         </tr>`}).join("");return`
       <div class="artist-song-table">
         <h3 class="artist-table-header">${s.strAlbum}</h3>
@@ -23,13 +23,15 @@ import{a as l,R as g,S as y}from"./assets/vendor-Byf7b3WI.js";(function(){const 
           <thead>
             <tr><th>Track</th><th>Time</th><th>Link</th></tr>
           </thead>
-          <tbody>${i}</tbody>
+          <tbody>${o}</tbody>
         </table>
-      </div>`}).join("")}function h(t,e){const s=E(t),i=M(t),r=_(t),o=B(t);e.insertAdjacentHTML("beforeend",`
+      </div>`}).join("")}function B(t,r){const s=E(t);M(t);const o=_(t),e=T(t);r.insertAdjacentHTML("beforeend",`
     <div class="artist-info-wrapper">
       <h1 class="artist-name-title">${t.strArtist}</h1>
       <div class="artist-info">
-        <img class="artist-img" src="${t.strArtistThumb}" alt="${t.strArtist} artist photo">
+        <div class = "artist-img-wrapper">
+          <img class="artist-img" src="${t.strArtistThumb}" alt="${t.strArtist} artist photo">
+        </div>
         <div class="artist-short-info">
           <div class="artist-short-info-grid-wrapper">
             <div class="artist-short-info-years">
@@ -51,34 +53,27 @@ import{a as l,R as g,S as y}from"./assets/vendor-Byf7b3WI.js";(function(){const 
           </div>
           <div class="artist-bio">
             <h3 class="short-info-small-header">Biography</h3>
-            <p class="short-info-small-text">${i}</p>
+            <div class = "short-info-small-text-wrapper">
+              <p class="short-info-small-text">${t.strBiographyEN}</p>
+            </div>
           </div>
-          <div class="more-bio">
-            <button class="more-bio-btn">+</button>
-          </div>
+          
           <div class="artist-short-info-genres">
-            <ul class="artist-short-info-genres-list">${r}</ul>
+            <ul class="artist-short-info-genres-list">${o}</ul>
           </div>
         </div>
       </div>
       <div class="artist-albums-wrapper">
         <h2 class="artist-albums-header">Albums</h2>
-        ${o}
+        ${e}
       </div>
-      <div class="modal-bio">
-        <button class="artists-modal-bio-close-btn">
-          <svg class="artists-modal-bio-close-icon" width="14" height="14">
-            <use href="../img/sprite.svg#icon-close"></use>
-          </svg>
-        </button>
-        <p class="modal-bio-text">${t.strBiographyEN}</p>
-      </div>
-    </div>`)}const a={list:document.querySelector(".js-artists-list"),loadMoreBtn:document.querySelector(".js-artists-load"),modalOverlay:document.querySelector(".modal-overlay"),modalRoot:document.querySelector(".modal")};let d=1,u=!1;a.list&&a.loadMoreBtn&&q();function q(){a.list.innerHTML="",a.loadMoreBtn.hidden=!1,a.loadMoreBtn.addEventListener("click",T),a.list.addEventListener("click",x),b(!0)}async function T(){u||(d+=1,await b(!1))}async function b(t){u=!0,a.loadMoreBtn.textContent="Loading...",t&&(d=1);const s=(await A(d)).artists;t&&(a.list.innerHTML=""),a.list.insertAdjacentHTML("beforeend",s.map(j).join("")),s.length<8&&(a.loadMoreBtn.hidden=!0),a.loadMoreBtn.innerHTML=`
+      
+    </div>`)}const a={list:document.querySelector(".js-artists-list"),loadMoreBtn:document.querySelector(".js-artists-load"),modalOverlay:document.querySelector(".modal-overlay"),modalRoot:document.querySelector(".modal")};let d=1,u=!1;a.list&&a.loadMoreBtn&&j();function j(){a.list.innerHTML="",a.loadMoreBtn.hidden=!1,a.loadMoreBtn.addEventListener("click",q),a.list.addEventListener("click",O),h(!0)}async function q(){u||(d+=1,await h(!1))}async function h(t){u=!0,a.loadMoreBtn.textContent="Loading...",t&&(d=1);const s=(await A(d)).artists;t&&(a.list.innerHTML=""),a.list.insertAdjacentHTML("beforeend",s.map(x).join("")),s.length<8&&(a.loadMoreBtn.hidden=!0),a.loadMoreBtn.innerHTML=`
     Load More
     <svg class="artists__load-icon" width="20" height="20" aria-hidden="true">
       <use href="../img/sprite.svg#icon-down-arrow-alt"></use>
     </svg>
-  `,u=!1}function j(t){var f;const e=t._id,s=t.strArtist,i=t.strBiographyEN||"",r=i.length>120?`${i.slice(0,120)}...`:i,o=((f=t.genres)==null?void 0:f.slice(0,4))||[];return`
+  `,u=!1}function x(t){var m;const r=t._id,s=t.strArtist,o=t.strBiographyEN||"",e=o.length>120?`${o.slice(0,120)}...`:o,i=((m=t.genres)==null?void 0:m.slice(0,4))||[];return`
     <li class="artist-card">
       <div class="artist-card__image">
         <img src="${t.strArtistThumb||""}" alt="${s}" loading="lazy" />
@@ -86,16 +81,16 @@ import{a as l,R as g,S as y}from"./assets/vendor-Byf7b3WI.js";(function(){const 
 
       <div class="artist-card__content">
         <ul class="artist-card__tags">
-          ${o.map(v=>`<li class="artist-card__tag">${v}</li>`).join("")}
+          ${i.map(g=>`<li class="artist-card__tag">${g}</li>`).join("")}
         </ul>
 
         <h3 class="artist-card__name">${s}</h3>
-        <p class="artist-card__desc">${r}</p>
+        <p class="artist-card__desc">${e}</p>
 
         <button
           class="artist-card__more js-artist-more"
           type="button"
-          data-artist-id="${e}"
+          data-artist-id="${r}"
         >
           Learn More
           <svg class="artist-card__icon" width="16" height="16" aria-hidden="true">
@@ -104,12 +99,12 @@ import{a as l,R as g,S as y}from"./assets/vendor-Byf7b3WI.js";(function(){const 
         </button>
       </div>
     </li>
-  `}async function x(t){const e=t.target.closest(".js-artist-more");if(!e)return;const s=e.dataset.artistId;s&&O(s)}async function O(t){var i;a.modalOverlay.classList.add("is-open"),document.body.style.overflow="hidden",(i=document.querySelector(".artist-info-wrapper"))==null||i.remove();const s=await(await fetch(`https://sound-wave.b.goit.study/api/artists/${t}/albums`,{headers:{Accept:"application/json"}})).json();h(s,a.modalRoot)}const R="65ada227af9f6d155db46908",C=document.querySelector(".tmp-open-btn"),c=document.querySelector(".modal-overlay"),I=document.querySelector(".artists-modal-close-btn"),P=document.querySelector(".modal");async function F(){c.classList.add("is-open"),document.body.style.overflow="hidden";const t=document.querySelector(".artist-info-wrapper");t&&t.remove();try{const{data:e}=await l.get(`https://sound-wave.b.goit.study/api/artists/${R}/albums`);h(e,P),N()}catch(e){console.error("Request failed:",e)}}function m(){var t;c.classList.remove("is-open"),document.body.style.overflow="",(t=document.querySelector(".artist-info-wrapper"))==null||t.remove()}function N(){const t=document.querySelector(".more-bio-btn"),e=document.querySelector(".modal-bio"),s=document.querySelector(".artists-modal-bio-close-btn");t.addEventListener("click",()=>e.classList.add("is-open")),s.addEventListener("click",()=>e.classList.remove("is-open"))}C.addEventListener("click",F);I.addEventListener("click",m);c.addEventListener("click",t=>{t.target===c&&m()});document.addEventListener("keydown",t=>{t.key==="Escape"&&m()});const D={feedbacksList:document.querySelector(".swiper-wrapper")};function H(t){const e=t.map(({_id:s,name:i,rating:r,descr:o})=>`
+  `}async function O(t){const r=t.target.closest(".js-artist-more");if(!r)return;const s=r.dataset.artistId;s&&R(s)}async function R(t){var o;a.modalOverlay.classList.add("is-open"),document.body.style.overflow="hidden",(o=document.querySelector(".artist-info-wrapper"))==null||o.remove();const s=await(await fetch(`https://sound-wave.b.goit.study/api/artists/${t}/albums`,{headers:{Accept:"application/json"}})).json();B(s,a.modalRoot)}const l=document.querySelector(".modal-overlay"),v=document.querySelector(".artists-modal-close-btn");document.querySelector(".modal");function n(){var t;l.classList.remove("is-open"),document.body.style.overflow="",(t=document.querySelector(".artist-info-wrapper"))==null||t.remove(),v.removeEventListener("click",n),l.removeEventListener("click",n),document.removeEventListener("keydown",n)}v.addEventListener("click",n);l.addEventListener("click",t=>{t.target===l&&n()});document.addEventListener("keydown",t=>{t.key==="Escape"&&n()});const I={feedbacksList:document.querySelector(".swiper-wrapper")};function C(t){const r=t.map(({_id:s,name:o,rating:e,descr:i})=>`
         <div class="swiper-slide">
           <div class="feedback-block">
-            <div data-raty class="feedback-rating" data-id=${s} data-score=${r}></div>
-            <p class="feedback-descr">${o}</p>
-            <p class="feedback-name">${i}</p>
+            <div data-raty class="feedback-rating" data-id=${s} data-score=${e}></div>
+            <p class="feedback-descr">${i}</p>
+            <p class="feedback-name">${o}</p>
           </div>
-        </div>`).join("");D.feedbacksList.insertAdjacentHTML("beforeend",e)}function Y(){const t={starOn:"./img/feedback-img/star-on.png",starOff:"./img/feedback-img/star-off.png",space:!1,readOnly:!0,halfShow:!1};Array.from(document.querySelectorAll("[data-raty]")).map(s=>{const i=Number(s.dataset.score);new g(s,{...t,score:i}).init()})}function G(){new y(".swiper",{direction:"horizontal",loop:!1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination"},scrollbar:{el:".swiper-scrollbar"}})}K();async function K(){try{const e=(await $()).data;H(e)}catch(t){console.log("Error create feedbacks list",t);return}Y(),G()}function z(){const t=document.querySelector(".nav-button"),e=document.querySelector(".modal-close-button"),s=document.querySelector(".modal-menu");document.querySelectorAll(".modal-nav-link").forEach(r=>{r.addEventListener("click",()=>{s.classList.remove("modal-open")})}),t.addEventListener("click",()=>{s.classList.add("modal-open")}),e.addEventListener("click",()=>{s.classList.remove("modal-open")})}z();const{height:U}=document.querySelector(".header").getBoundingClientRect();document.body.style.paddingTop=`${U}px`;
+        </div>`).join("");I.feedbacksList.insertAdjacentHTML("beforeend",r)}function F(){const t={starOn:"./img/feedback-img/star-on.png",starOff:"./img/feedback-img/star-off.png",space:!1,readOnly:!0,halfShow:!1};Array.from(document.querySelectorAll("[data-raty]")).map(s=>{const o=Number(s.dataset.score);new y(s,{...t,score:o}).init()})}function N(){new b(".swiper",{direction:"horizontal",loop:!1,navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},pagination:{el:".swiper-pagination"},scrollbar:{el:".swiper-scrollbar"}})}P();async function P(){try{const r=(await S()).data;C(r)}catch(t){console.log("Error create feedbacks list",t);return}F(),N()}function H(){const t=document.querySelector(".nav-button"),r=document.querySelector(".modal-close-button"),s=document.querySelector(".modal-menu");document.querySelectorAll(".modal-nav-link").forEach(e=>{e.addEventListener("click",()=>{s.classList.remove("modal-open")})}),t.addEventListener("click",()=>{s.classList.add("modal-open")}),r.addEventListener("click",()=>{s.classList.remove("modal-open")})}H();const{height:D}=document.querySelector(".header").getBoundingClientRect();document.body.style.paddingTop=`${D}px`;
 //# sourceMappingURL=index.js.map
