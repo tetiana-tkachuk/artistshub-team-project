@@ -31,8 +31,8 @@ function handleModalClose() {
   document.querySelector('.artist-info-wrapper')?.remove();
 
   modalWindowCloseBtn.removeEventListener('click', handleModalClose);
-  modalOverlay.removeEventListener('click', handleOverlayClick);
-  document.removeEventListener('keydown', handleEscKey);
+  modalOverlay.removeEventListener('click', handleModalClose);
+  document.removeEventListener('keydown', handleModalClose);
 }
 
 modalWindowCloseBtn.addEventListener('click', handleModalClose);
