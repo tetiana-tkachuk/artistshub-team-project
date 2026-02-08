@@ -8,20 +8,60 @@
     <script type="module" crossorigin src="/artistshub-team-project/index.js"></script>
     <link rel="modulepreload" crossorigin href="/artistshub-team-project/assets/vendor-Byf7b3WI.js">
     <link rel="stylesheet" crossorigin href="/artistshub-team-project/assets/vendor-Ye89sRxA.css">
-    <link rel="stylesheet" crossorigin href="/artistshub-team-project/assets/index-4Mpco-V1.css">
+    <link rel="stylesheet" crossorigin href="/artistshub-team-project/assets/index-DOLVYNh2.css">
   </head>
   <body>
     <header class="header">
-  <div class="container">
-    <h2>Header</h2>
+  <div class="container header-container">
     <nav class="nav">
-      <a class="nav-logo" href="./index.html" aria-label="Site logo">
-        <p></p>
+      <a class="nav-logo" href="./index.html" aria-label="Go to homepage">
+        <svg class="nav-logo-icon" aria-hidden="true">
+          <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-logo"></use>
+        </svg>
       </a>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#artists" class="nav-link">Artists</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About Us</a></li>
+        <li class="nav-item"><a href="#reviews" class="nav-link">Reviews</a></li>
+      </ul>
+      <button type="button" class="nav-button">
+        <svg class="nav-burger-icon" width="48" height="48">
+          <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-menu"></use>
+        </svg>
+      </button>
     </nav>
   </div>
 </header>
 
+<!-- modal menu -->
+
+<div class="modal-menu">
+  <div class="modal-top">
+    <a href="./index.html" class="nav-logo" aria-label="Go to homepage">
+      <svg class="nav-logo-icon" aria-hidden="true">
+        <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-logo"></use>
+      </svg>
+    </a>
+    <button type="button" class="modal-close-button" aria-label="Close menu">
+      <svg class="modal-close-icon" width="24" height="24">
+        <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-close"></use>
+      </svg>
+    </button>
+  </div>
+    <nav class="modal-nav">
+      <ul class="modal-nav-list">
+        <li class="modal-nav-item">
+          <a href="#artists" class="modal-nav-link">Artists</a>
+        </li>
+        <li class="modal-nav-item">
+          <a href="#about" class="modal-nav-link">About Us</a>
+        </li>
+        <li class="modal-nav-item">
+          <a href="#reviews" class="modal-nav-link">Reviews</a>
+        </li>
+      </ul>
+    </nav>
+</div>
 
     <main>
       <section class="hero">
@@ -36,7 +76,7 @@
         <a href="#artists" class="btn explore-btn">
       Explore Artists
       <svg class="hero-icon" width="24" height="24">
-        <use href="/artistshub-team-project/assets/sprite-m9G4ER8n.svg#icon-right-arrow"></use>
+        <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-right-arrow"></use>
       </svg>
       </a>
     </div>
@@ -64,7 +104,7 @@
   </div>
 </section>
 
-      <section class="section">
+      <section class="section" id="about">
   <div class="container about-container">
     <div class="about-picture-wrapper">
       <picture class="about-img">
@@ -86,7 +126,7 @@
     <div class="about-content">
       <div class="about-heading">
     <svg class="about-icon">
-      <use href="/artistshub-team-project/assets/sprite-m9G4ER8n.svg#icon-logo-icon"></use>
+      <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-logo-icon"></use>
     </svg>
     <h2 class="about-title">About ArtistsHub</h2>
     <p class="about-text">
@@ -137,7 +177,7 @@
     <div class="footer-logo-wrapper">
       <a href="./index.html" class="footer-logo" aria-label="Go to homepage">
         <svg class="footer-logo-svg" width="84" height="36" aria-hidden="true">
-          <use href="/artistshub-team-project/assets/sprite-m9G4ER8n.svg#icon-company-logo"></use>
+          <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-company-logo"></use>
         </svg>
       </a>
     </div>
@@ -175,7 +215,7 @@
                 height="40"
                 aria-hidden="true"
               >
-                <use href="/artistshub-team-project/assets/sprite-m9G4ER8n.svg#icon-instagram"></use>
+                <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-instagram"></use>
               </svg>
             </a>
           </li>
@@ -194,7 +234,7 @@
                 height="40"
                 aria-hidden="true"
               >
-                <use href="/artistshub-team-project/assets/sprite-m9G4ER8n.svg#icon-facebook"></use>
+                <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-facebook"></use>
               </svg>
             </a>
           </li>
@@ -213,7 +253,7 @@
                 height="40"
                 aria-hidden="true"
               >
-                <use href="/artistshub-team-project/assets/sprite-m9G4ER8n.svg#icon-youtube"></use>
+                <use href="/artistshub-team-project/assets/sprite-D43eHpaH.svg#icon-youtube"></use>
               </svg>
             </a>
           </li>
