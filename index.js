@@ -3,8 +3,8 @@ import{a as p,R as E,S as A,i as c}from"./assets/vendor-IF1acRtE.js";(function()
       <button class="artist-short-info-genre-btn">${s}</button>
     </li>`).join("")}function R(e){return e.albumsList.map(t=>{const o=t.tracks.map(r=>{const i=r.movie===null?"":`
         <a href="${r.movie}" target="_blank" rel="noopener noreferrer">
-          <svg width="24" height="24" fill="#ffffff">
-            <use href="../img/sprite.svg#icon-youtube"></use>
+          <svg class='artist-modal-youtube-icon' width="24" height="24">
+            <use href="/img/sprite.svg#icon-youtube"></use>
           </svg>
         </a>`;return`
         <tr>
