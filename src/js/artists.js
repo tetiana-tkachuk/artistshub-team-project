@@ -1,7 +1,7 @@
 import { getArtists } from './api.js';
 import { renderArtistInfo } from './artist-modal-render.js';
 import {handleModalClose, handleEscKeyClick, handleModalOverlayClick} from './artist-modal.js'
-
+import {mountLoader, initLoader, showLoader, hideLoader} from './loader.js'
 const refs = {
   list: document.querySelector('.js-artists-list'),
   loadMoreBtn: document.querySelector('.js-artists-load'),
@@ -9,7 +9,9 @@ const refs = {
   modalRoot: document.querySelector('.modal'),
   modalOverlay: document.querySelector('.modal-overlay'),
   modalWindowCloseBtn: document.querySelector('.artists-modal-close-btn'),
+  containerClass: document.querySelector('.container'),
 };
+const loaderOverlay = initLoader('body')
 
 let page = 1;
 let isLoading = false;
@@ -36,32 +38,43 @@ async function onLoadMore() {
 
 async function loadArtists(reset) {
   isLoading = true;
-  refs.loadMoreBtn.textContent = 'Loading...';
+  refs.loadMoreBtn.hidden = 'Loading...';
 
   if (reset) page = 1;
+  
+  showLoader(loaderOverlay)
 
-  const data = await getArtists(page);
-  const artists = data.artists;
+  try{
+    const data = await getArtists(page);
+    const artists = data.artists;
+    if (reset) refs.list.innerHTML = '';
 
-  if (reset) refs.list.innerHTML = '';
-
-  refs.list.insertAdjacentHTML(
-    'beforeend',
-    artists.map(createArtistCard).join('')
-  );
-
-  if (artists.length < 8) {
-    refs.loadMoreBtn.hidden = true;
+    refs.list.insertAdjacentHTML(
+      'beforeend',
+      artists.map(createArtistCard).join('')
+    );
+  
+    if (artists.length < 8) {
+      refs.loadMoreBtn.hidden = true;
+    }
+  
+    refs.loadMoreBtn.innerHTML = `
+      Load More
+      <svg class="artists__load-icon" width="20" height="20" aria-hidden="true">
+        <use href="../img/sprite.svg#icon-down-arrow-alt"></use>
+      </svg>
+    `;
+  } catch (error){
+    console.log(error)
+  } finally{
+    hideLoader(loaderOverlay)
+    isLoading = false;
   }
 
-  refs.loadMoreBtn.innerHTML = `
-    Load More
-    <svg class="artists__load-icon" width="20" height="20" aria-hidden="true">
-      <use href="../img/sprite.svg#icon-down-arrow-alt"></use>
-    </svg>
-  `;
 
-  isLoading = false;
+
+
+  
 }
 
 function createArtistCard(artist) {
@@ -113,6 +126,7 @@ async function onArtistClick(e) {
 }
 
 async function openArtistModal(artistId) {
+  showLoader(loaderOverlay)
   refs.modalOverlay.classList.add('is-open');
   document.body.style.overflow = 'hidden';
 
@@ -128,6 +142,7 @@ async function openArtistModal(artistId) {
 
   const data = await res.json();
   renderArtistInfo(data, refs.modalRoot);
+  hideLoader(loaderOverlay)
 }
 
 
