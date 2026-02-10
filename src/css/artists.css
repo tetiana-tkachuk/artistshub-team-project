@@ -25,7 +25,7 @@
 .artists-list {
   display: grid;
   list-style: none;
-  gap: 32px; 
+  gap: 32px;
 }
 
 .artist-card {
@@ -81,7 +81,7 @@
 }
 
 .artist-card-load-more {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 4px;
   font-weight: 500;
@@ -124,11 +124,9 @@
 }
 
 @media screen and (min-width: 768px) {
-
   .artist-card-image {
     aspect-ratio: 704 / 432.79;
   }
-
 }
 
 @media screen and (min-width: 1440px) {
@@ -147,5 +145,4 @@
   .artists-title {
     font-size: 60px;
   }
-
 }

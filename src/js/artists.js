@@ -3,6 +3,7 @@ import { renderArtistInfo } from './artist-modal-render.js';
 import { attachModalListeners } from './artist-modal.js';
 import { initLoader, showLoader, hideLoader } from './loader.js';
 import { ARTISTS_PER_PAGE } from './constant.js';
+import { showToast } from './izitoast.js';
 
 import sprite from '../img/sprite.svg';
 
@@ -17,6 +18,7 @@ const loaderOverlay = initLoader('body');
 
 let page = 1;
 let isLoading = false;
+let hasShownNoMoreToast = false;
 
 if (refs.list && refs.loadMoreBtn) {
   initArtists();
@@ -26,6 +28,7 @@ function initArtists() {
   refs.list.innerHTML = '';
   refs.loadMoreBtn.hidden = true;
   refs.loadMoreBtn.disabled = false;
+  hasShownNoMoreToast = false;
 
   refs.loadMoreBtn.addEventListener('click', onLoadMore);
   refs.list.addEventListener('click', onArtistClick);
@@ -69,8 +72,14 @@ async function loadArtists(reset) {
       artists.length
     );
     refs.loadMoreBtn.hidden = !hasMore;
+    if (!hasMore && !hasShownNoMoreToast) {
+      showToast('No more artists to load.', 'info');
+      hasShownNoMoreToast = true;
+    }
   } catch (error) {
     console.log(error);
+    refs.loadMoreBtn.hidden = true;
+    showToast('Failed to load artists. Please try again later.', 'error');
   } finally {
     hideLoader(loaderOverlay);
     refs.loadMoreBtn.disabled = false;
