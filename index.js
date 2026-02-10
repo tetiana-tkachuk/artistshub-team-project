@@ -27,7 +27,7 @@ import{a as h,R as M,S as T,i as d}from"./assets/vendor-IF1acRtE.js";(function()
         </table>
       </div>`}).join("")}function P(e,t){const s=x(e);I(e);const o=j(e),r=Q(e);t.insertAdjacentHTML("beforeend",`
     <div class="artist-info-wrapper">
-      <h1 class="artist-name-title">${e.strArtist}</h1>
+      <h2 class="artist-name-title">${e.strArtist}</h2>
       <div class="artist-info">
         <div class = "artist-img-wrapper">
           <img class="artist-img" src="${e.strArtistThumb}" alt="${e.strArtist} artist photo">
