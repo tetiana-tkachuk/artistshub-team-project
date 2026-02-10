@@ -4,6 +4,8 @@ import { attachModalListeners } from './artist-modal.js';
 import { initLoader, showLoader, hideLoader } from './loader.js';
 import { ARTISTS_PER_PAGE } from './constant.js';
 
+import sprite from '../img/sprite.svg';
+
 const refs = {
   list: document.querySelector('.js-artists-list'),
   loadMoreBtn: document.querySelector('.js-artists-load'),
@@ -60,7 +62,12 @@ async function loadArtists(reset) {
       artists.map(createArtistCard).join('')
     );
 
-    const hasMore = getHasMoreArtists(data, page, ARTISTS_PER_PAGE, artists.length);
+    const hasMore = getHasMoreArtists(
+      data,
+      page,
+      ARTISTS_PER_PAGE,
+      artists.length
+    );
     refs.loadMoreBtn.hidden = !hasMore;
   } catch (error) {
     console.log(error);
@@ -129,7 +136,7 @@ function createArtistCard(artist) {
         >
           Learn More
           <svg class="artist-card-icon" width="24" height="24" aria-hidden="true">
-            <use href="/img/sprite.svg#icon-caret-right"></use>
+            <use href="${sprite}#icon-caret-right"></use>
           </svg>
         </button>
       </div>
@@ -174,8 +181,3 @@ async function openArtistModal(artistId) {
     hideLoader(loaderOverlay);
   }
 }
-
-
-
-
-

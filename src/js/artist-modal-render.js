@@ -2,6 +2,8 @@
 // These are the render functions for artist-modal.js file
 /////////
 
+import sprite from '../img/sprite.svg';
+
 import {
   convertMstoMins,
   renderActiveYears,
@@ -32,7 +34,7 @@ export function renderAlbumsList(data) {
               : `
         <a href="${track.movie}" target="_blank" rel="noopener noreferrer">
           <svg class='artist-modal-youtube-icon' width="24" height="24">
-            <use href="/img/sprite.svg#icon-youtube"></use>
+            <use href="${sprite}#icon-youtube"></use>
           </svg>
         </a>`;
 
