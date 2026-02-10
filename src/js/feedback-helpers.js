@@ -9,6 +9,7 @@ import 'swiper/css/bundle';
 // import 'swiper/element/css/navigation';
 // import 'swiper/element/css/pagination';
 
+// Імпорт іконок-зірочок
 import starOn from '../img/feedback-img/star-on.png';
 import starOff from '../img/feedback-img/star-off.png';
 
@@ -23,6 +24,7 @@ export function createLeverStar() {
     space: false,
     readOnly: true,
     halfShow: false,
+    // Параметр для встановлення рейтингу
     // score:3.59,
   };
 
@@ -43,7 +45,7 @@ export function createLeverStar() {
 // =============================================================
 // Функція - створення Слайдеру відгуків
 // =============================================================
-export function createFeedbaсksSlider() {
+export function createSlider() {
   // init Swiper:
   const swiper = new Swiper('.swiper', {
     // Optional parameters :
@@ -60,12 +62,6 @@ export function createFeedbaсksSlider() {
 
     // Swiper height (in px).
     // height: null,
-
-    // Pagination Parameters
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-    },
 
     // Navigation Parameters
     navigation: {
@@ -92,12 +88,51 @@ export function createFeedbaсksSlider() {
       },
     },
 
+    // Pagination Parameters
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+
+      // Пагінація - розширена 
+      // dynamicBullets: true,
+      // dynamicMainBullets: 3,
+
+      // Create only 3 bullet fo pagination
+      renderBullet: function (index, className) {
+        if (index < 3) {
+          return '<span class="' + className + '"></span>';
+        }
+        return '';
+      },
+    },
+
     // Іf we need scrollbar
     // scrollbar: {
     //   el: '.swiper-scrollbar',
     // },
   });
+
+  // ===========================================================================
+  // Слухач події = зміна слайда - 
+  // ===========================================================================
+  swiper.on('slideChange', function () {
+  
+    let activeIndex = swiper.activeIndex;
+    let bullets = document.querySelectorAll('.swiper-pagination-bullet');
+    bullets.forEach(b => b.classList.remove('swiper-pagination-bullet-active'));
+
+    if (activeIndex == 0) {
+      bullets[0].classList.add('swiper-pagination-bullet-active');
+    } else if (activeIndex == 9) { 
+      bullets[2].classList.add('swiper-pagination-bullet-active');
+    } else {
+      bullets[1].classList.add('swiper-pagination-bullet-active');
+    }
+  });
+  // ===========================================================================
+
 }
+
 
 // =============================================================
 // Функція - Перевірка розміру екрана та визначення кнопок навігації слайдера
