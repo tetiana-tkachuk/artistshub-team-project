@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 100;
 }
 .header-container {
   display: flex;
@@ -26,12 +26,14 @@
   width: 107px;
   height: 30px;
 }
-.nav-burger-icon, .modal-close-icon {
+.nav-burger-icon,
+.modal-close-icon {
   fill: var(--color-white);
   width: 24px;
   height: 24px;
 }
-.nav-button, .modal-close-button {
+.nav-button,
+.modal-close-button {
   display: flex;
   align-items: center;
   justify-content: center;
