@@ -53,8 +53,9 @@
   width: 32px;
   height: 32px;
   top: 16px;
-  right: 8px;
-  transform: translate(-0%, -50%);
+  right: 16px;
+  transform: translateY(-50%, -50%);
+
   background-color: var(--color-bg);
   border: none;
 }
@@ -233,6 +234,11 @@ tbody td {
     left: 32px;
     right: 32px;
   }
+
+  .artists-modal-close-btn {
+    right: 47px;
+  }
+
   .artists-modal-close-icon:hover {
     opacity: 0.6;
   }
@@ -280,6 +286,10 @@ tbody td {
     padding-right: 64px;
     left: 64px;
     right: 64px;
+  }
+
+  .artists-modal-close-btn {
+    right: 16px;
   }
 
   .artist-img-wrapper {
