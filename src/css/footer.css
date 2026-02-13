@@ -89,6 +89,18 @@
   line-height: 1.5;
 }
 
+.open-team-modal-btn {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-decoration: underline;
+  color: var(--color-white);
+  background-color: var(--color-bg);
+  border: none;
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 768px) {
   .footer {
     padding: 80px 0;
@@ -120,6 +132,17 @@
   }
 
   .footer-text-wrapper {
+    display: flex;
     margin-right: auto;
+  }
+
+  .open-team-modal-btn:hover {
+    color: var(--color-accent);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .open-team-modal-btn {
+    font-size: 16px;
   }
 }
