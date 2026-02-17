@@ -93,7 +93,7 @@ import{a as b,i as d,R,S as $}from"./assets/vendor-CJJRgr2I.js";(function(){cons
         </div>
 
         <button
-          class="artist-card-load-more js-artist-load-more"
+          class="artist-card-learn-more js-artist-learn-more"
           type="button"
           data-artist-id="${s}"
         >
@@ -104,7 +104,7 @@ import{a as b,i as d,R,S as $}from"./assets/vendor-CJJRgr2I.js";(function(){cons
         </button>
       </div>
     </li>
-  `}async function J(e){const s=e.target.closest(".js-artist-load-more");if(!s)return;const t=s.dataset.artistId;t&&V(t)}async function V(e){var s;if(!(!i.modalOverlay||!i.modalRoot)){k(A),i.modalOverlay.classList.add("is-open"),i.modalOverlay.focus(),document.body.style.overflow="hidden",(s=document.querySelector(".artist-info-wrapper"))==null||s.remove(),D();try{const o=await(await fetch(`https://sound-wave.b.goit.study/api/artists/${e}/albums`,{headers:{Accept:"application/json"}})).json();q(o,i.modalRoot)}catch(t){console.log(t)}finally{M(A)}}}const W={feedbacksList:document.querySelector(".swiper-wrapper")};function z(e){const s=e.map(({_id:t,name:o,rating:r,descr:n})=>{const a=Math.round(r);return`
+  `}async function J(e){const s=e.target.closest(".js-artist-learn-more");if(!s)return;const t=s.dataset.artistId;t&&V(t)}async function V(e){var s;if(!(!i.modalOverlay||!i.modalRoot)){k(A),i.modalOverlay.classList.add("is-open"),i.modalOverlay.focus(),document.body.style.overflow="hidden",(s=document.querySelector(".artist-info-wrapper"))==null||s.remove(),D();try{const o=await(await fetch(`https://sound-wave.b.goit.study/api/artists/${e}/albums`,{headers:{Accept:"application/json"}})).json();q(o,i.modalRoot)}catch(t){console.log(t)}finally{M(A)}}}const W={feedbacksList:document.querySelector(".swiper-wrapper")};function z(e){const s=e.map(({_id:t,name:o,rating:r,descr:n})=>{const a=Math.round(r);return`
         <div class="swiper-slide">
           <div class="feedback-block">
             <div data-raty class="feedback-rating" data-id=${t} data-score=${a}></div>
