@@ -11,7 +11,6 @@ function modalMenuHandler() {
   });
 
   openBtn.addEventListener('click', () => {
-    openBtn.blur(); //remove focus from burger-menu
     modalMenu.classList.remove('slideOutUp');
     document.body.style.overflow = 'hidden';
     modalMenu.classList.add('modal-open', 'animate', 'slideInDown');

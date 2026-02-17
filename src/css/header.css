@@ -63,10 +63,12 @@
   z-index: 9999;
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 .modal-open {
   opacity: 1;
   pointer-events: auto;
+  visibility: visible;
 }
 .modal-top {
   display: flex;
