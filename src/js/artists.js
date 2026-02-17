@@ -139,7 +139,7 @@ function createArtistCard(artist) {
         </div>
 
         <button
-          class="artist-card-load-more js-artist-load-more"
+          class="artist-card-learn-more js-artist-learn-more"
           type="button"
           data-artist-id="${id}"
         >
@@ -154,7 +154,7 @@ function createArtistCard(artist) {
 }
 
 async function onArtistClick(e) {
-  const btn = e.target.closest('.js-artist-load-more');
+  const btn = e.target.closest('.js-artist-learn-more');
   if (!btn) return;
 
   const artistId = btn.dataset.artistId;
